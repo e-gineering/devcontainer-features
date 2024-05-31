@@ -1,6 +1,6 @@
 {
     "name": "Rye",
-    "version": "1.0.1",
+    "version": "1.1.0",
     "id": "rye",
     "description": "A Hassle-Free Python Experience",
     "installsAfter": [
@@ -13,6 +13,13 @@
         "RYE_NO_AUTO_INSTALL": "1"
     },
     "postCreateCommand": "echo 'source \"$HOME/.rye/env\"' >> ~/.profile",
+    "options": {
+        "bashCompletion": {
+            "type": "boolean",
+            "description": "Enable bash completion for Rye",
+            "default": true
+        }
+    },
     "customizations": {
         "vscode": {
             "extensions": [
