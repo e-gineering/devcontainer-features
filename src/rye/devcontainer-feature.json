@@ -1,0 +1,22 @@
+{
+    "name": "Rye",
+    "version": "1.0.0",
+    "id": "rye",
+    "description": "A Hassle-Free Python Experience",
+    "installsAfter": [
+        "ghcr.io/devcontainers/features/common-utils",
+        "ghcr.io/devcontainers/features/python"
+    ],
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "ms-python.python",
+                "tamasfe.even-better-toml"
+            ],
+            "settings": {
+                "python.defaultInterpreterPath": ".venv/bin/python",
+                "python.terminal.activateEnvInCurrentTerminal": true
+            }
+        }
+    }
+}
