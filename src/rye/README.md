@@ -11,7 +11,11 @@ A Hassle-Free Python Experience
 }
 ```
 
+## Options
 
+| Options Id | Description | Type | Default Value |
+|-----|-----|-----|-----|
+| bashCompletion | Enable bash completion for Rye | boolean | true |
 
 ## Customizations
 
