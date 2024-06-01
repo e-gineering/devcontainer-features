@@ -7,7 +7,7 @@ A Hassle-Free Python Experience
 
 ```json
 "features": {
-    "ghcr.io/dbirks/devcontainer-features/rye:1": {}
+    "ghcr.io/e-gineering/devcontainer-features/rye:1": {}
 }
 ```
 
@@ -28,4 +28,4 @@ A Hassle-Free Python Experience
 
 ---
 
-_Note: This file was auto-generated from the [devcontainer-feature.json](https://github.com/dbirks/devcontainer-features/blob/main/src/rye/devcontainer-feature.json).  Add additional notes to a `NOTES.md`._
+_Note: This file was auto-generated from the [devcontainer-feature.json](https://github.com/e-gineering/devcontainer-features/blob/main/src/rye/devcontainer-feature.json).  Add additional notes to a `NOTES.md`._
