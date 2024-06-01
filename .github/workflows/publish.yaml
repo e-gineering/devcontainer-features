@@ -1,0 +1,40 @@
+name: Publish features
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      packages: write
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Publish features and generate documentation
+        uses: devcontainers/action@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          publish-features: "true"
+          base-path-to-features: "./src"
+          generate-docs: "true"
+
+      - name: Commit changes to the docs
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          git config --global user.email github-actions[bot]@users.noreply.github.com
+          git config --global user.name github-actions[bot]
+
+          git add **/README.md
+
+          if git status --porcelain | grep --quiet README.md; then
+            git commit -m "Automated documentation update [skip ci]"
+            git push
+          else
+            echo "No changes to commit"
+          fi
