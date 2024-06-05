@@ -24,7 +24,7 @@ jobs:
           generate-docs: "true"
 
       - name: Update the root readme
-        run: .github/scripts/update_root_readme.sh
+        run: .github/scripts/update_root_readme.py
 
       - name: Commit changes to the docs
         env:
