@@ -35,6 +35,12 @@ jobs:
 
           git add **/README.md
 
+          echo ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+          git status
+          echo ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+          git diff
+          echo ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
           if git status --porcelain | grep --quiet README.md; then
             git commit -m "Automated documentation update [skip ci]"
             git push
