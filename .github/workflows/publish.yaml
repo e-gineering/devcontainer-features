@@ -23,6 +23,9 @@ jobs:
           base-path-to-features: "./src"
           generate-docs: "true"
 
+      - name: Update the root readme
+        run: .github/scripts/update_root_readme.sh
+
       - name: Commit changes to the docs
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
