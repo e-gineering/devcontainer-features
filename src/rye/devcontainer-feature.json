@@ -1,6 +1,6 @@
 {
     "name": "Rye",
-    "version": "1.1.2",
+    "version": "1.2.0",
     "id": "rye",
     "description": "A Hassle-Free Python Experience",
     "installsAfter": [
@@ -8,7 +8,6 @@
     ],
     "containerEnv": {
         "PATH": "/usr/local/lib/rye/shims:${PATH}",
-        "RYE_HOME": "/usr/local/lib/rye",
         "RYE_NO_AUTO_INSTALL": "1"
     },
     "postCreateCommand": "echo 'source \"$HOME/.rye/env\"' >> ~/.profile",
