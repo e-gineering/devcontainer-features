@@ -35,12 +35,6 @@ jobs:
 
           find . -name README.md | xargs -n1 git add
 
-          echo ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-          git status
-          echo ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-          git diff
-          echo ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
           if git status --porcelain | grep --quiet README.md; then
             git commit -m "Automated documentation update [skip ci]"
             git push
