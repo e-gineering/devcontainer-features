@@ -18,9 +18,9 @@ A Hassle-Free Python Experience
 
 #### Options
 
-| Options Id | Description | Type | Default Value |
-|-----|-----|-----|-----|
-| bashCompletion | Enable bash completion for Rye | boolean | true |
+| Options Id     | Description                    | Type    | Default Value |
+| -------------- | ------------------------------ | ------- | ------------- |
+| bashCompletion | Enable bash completion for Rye | boolean | true          |
 
 #### Customizations
 
@@ -36,6 +36,27 @@ A Hassle-Free Python Experience
 ## Contributing
 
 Bugfixes and features are welcome! If you have any questions feel free to open an issue as well.
+
+## Local testing
+
+To do local testing, I've been going to a project that consumes this feature, and making a soft link to make `.devcontainer/devcontainer-features` in the consuming project link to my local `devcontainer-features` repo where I've made changes that I need to now test.
+
+```
+ln -s ~/dev/devcontainer-features .devcontainer/
+```
+
+Then in your consuming project's `.devcontainer/devcontainer.json`, you can then refer to it like:
+
+```json
+{
+    "name": "Python",
+    "image": "mcr.microsoft.com/devcontainers/python:1-3.12-bookworm",
+    "features": {
+        // "ghcr.io/e-gineering/devcontainer-features/rye:1": {}
+        "./devcontainer-features/src/rye": {}
+    }
+}
+```
 
 ## Releasing
 
