@@ -1,6 +1,30 @@
 <h1 align="center">Dev Container Features</h1>
 
-## Features
+<p align="center">
+  <a href="https://github.com/e-gineering/devcontainer-features/blob/main/LICENSE"><img src="https://img.shields.io/github/license/e-gineering/devcontainer-features" alt="License"></a>
+  <a href="https://github.com/e-gineering/devcontainer-features/actions"><img src="https://img.shields.io/github/actions/workflow/status/e-gineering/devcontainer-features/publish.yml" alt="Build Status"></a>
+</p>
+
+## Overview
+
+This repository contains [Dev Container Features](https://containers.dev/implementors/features/) for use with Visual Studio Code Dev Containers, GitHub Codespaces, and other tools that support the Dev Container specification.
+
+Dev Container Features are self-contained units of installation code and development container configuration. They are designed to be easily shared and reused across different projects.
+
+## Quick Start
+
+To use a feature from this collection, add it to your `.devcontainer/devcontainer.json` file:
+
+```json
+{
+  "image": "mcr.microsoft.com/devcontainers/base:ubuntu",
+  "features": {
+    "ghcr.io/e-gineering/devcontainer-features/rye:1": {}
+  }
+}
+```
+
+## Available Features
 
 <!-- START_FEATURES -->
 
@@ -35,31 +59,67 @@ A Hassle-Free Python Experience
 
 ## Contributing
 
-Bugfixes and features are welcome! If you have any questions feel free to open an issue as well.
+Contributions are welcome! Whether you want to fix bugs, add new features, or improve documentation, we appreciate your help.
 
-## Local testing
+### How to Contribute
 
-To do local testing, I've been going to a project that consumes this feature, and making a soft link to make `.devcontainer/devcontainer-features` in the consuming project link to my local `devcontainer-features` repo where I've made changes that I need to now test.
+1. Fork the repository
+2. Create a feature branch (`git checkout -b feature/your-feature`)
+3. Make your changes
+4. Test your changes locally (see Local Testing below)
+5. Commit your changes with a clear commit message
+6. Push to your branch (`git push origin feature/your-feature`)
+7. Open a Pull Request
 
-```
-ln -s ~/dev/devcontainer-features .devcontainer/
-```
+If you have any questions or need help, feel free to open an issue.
 
-Then in your consuming project's `.devcontainer/devcontainer.json`, you can then refer to it like:
+### Local Testing
 
-```json
-{
-    "name": "Python",
-    "image": "mcr.microsoft.com/devcontainers/python:1-3.12-bookworm",
-    "features": {
-        // "ghcr.io/e-gineering/devcontainer-features/rye:1": {}
-        "./devcontainer-features/src/rye": {}
-    }
-}
-```
+To test features locally before publishing:
 
-## Releasing
+1. Create a symbolic link from your test project to your local repository:
+   ```bash
+   ln -s ~/dev/devcontainer-features .devcontainer/
+   ```
 
-The version numbers are set by manually changing the `version` option in each `devcontainer-feature.json` file. Please feel free to bump the version number when making a change, and try to follow [semver](https://semver.org) (`major.minor.bugfix`) to not unexpectedly break the feature for people using it.
+2. Update your test project's `.devcontainer/devcontainer.json` to reference the local feature:
+   ```json
+   {
+       "name": "Python",
+       "image": "mcr.microsoft.com/devcontainers/python:1-3.12-bookworm",
+       "features": {
+           // Comment out the published version:
+           // "ghcr.io/e-gineering/devcontainer-features/rye:1": {}
 
-On any push to the `main` branch, several Github Actions will auto-generate the readme files, build, and then publish the container images to Github Container Registry.
+           // Use the local version:
+           "./devcontainer-features/src/rye": {}
+       }
+   }
+   ```
+
+3. Rebuild your dev container to test the changes
+
+### Releasing
+
+Version management and publishing are handled automatically:
+
+1. **Version Numbering**: Update the `version` field in the feature's `devcontainer-feature.json` file
+   - Follow [Semantic Versioning](https://semver.org): `MAJOR.MINOR.PATCH`
+   - `MAJOR`: Breaking changes
+   - `MINOR`: New features (backwards compatible)
+   - `PATCH`: Bug fixes (backwards compatible)
+
+2. **Automated Publishing**: On push to the `main` branch, GitHub Actions will:
+   - Auto-generate README files
+   - Build container images
+   - Publish to GitHub Container Registry (GHCR)
+
+## Resources
+
+- [Dev Container Features Specification](https://containers.dev/implementors/features/)
+- [Dev Containers Documentation](https://code.visualstudio.com/docs/devcontainers/containers)
+- [GitHub Container Registry](https://docs.github.com/en/packages/working-with-a-github-packages-registry/working-with-the-container-registry)
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
